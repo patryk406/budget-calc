@@ -15,7 +15,7 @@ const CalcForm = React.forwardRef(
   }) => {
     return (
       <form onSubmit={handleSubmit}>
-        <div className="form-center">
+        <div className='form-container'>
           <div className="form-group">
             <label htmlFor="charge">charge</label>
             <input

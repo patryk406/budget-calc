@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { CalcForm, CalcList, CalcBudget, Alert } from "./components/";
-
+import './styles.scss';
 function initialStorage(props) {
   const initialValue = localStorage.getItem(`${props}`) ? JSON.parse(localStorage.getItem(`${props}`)) : []
   return initialValue;

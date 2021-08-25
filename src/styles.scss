@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background:rgb(190, 213, 255);
+}
+@mixin flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.btn {
+    padding:5px;
+    border-radius:10px;
+    border:#fff 1px solid;
+    color:white;
+    background:darkgoldenrod;
+}
+.title{
+    text-align: center;
+}
+.app {
+@include flexbox;
+
+height: 90vh;
+}
+
+form {
+    height:40vh;
+    @include flexbox;
+    justify-content: space-evenly;
+    .form-container{
+        .form-group{
+            padding:1rem;
+        }
+    }
+
+}
+
+.budgetList {
+    width:100%;
+    @include flexbox;
+    flex-direction:row;
+    justify-content:space-evenly;
+}
+
+
+.sum {
+    position: absolute;
+    display:flex;
+    justify-content: space-evenly;
+    bottom:0;
+    left:50%;
+    transform: translate(-50%);
+}
