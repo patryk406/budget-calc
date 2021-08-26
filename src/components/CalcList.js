@@ -24,7 +24,7 @@ const CalcList = ({
           })}
         </ul>
         {expenses.length > 0 && (
-          <button className="btn" onClick={clearItems}>
+          <button className="btn" value='expenses' onClick={clearItems}>
             clear all expenses
             <MdDelete className="btn-icon" />
           </button>
@@ -44,7 +44,7 @@ const CalcList = ({
           })}
         </ul>
         {income.length > 0 && (
-          <button className="btn" onClick={clearItems}>
+          <button className="btn" value='income' onClick={clearItems}>
             clear all income
             <MdDelete className="btn-icon" />
           </button>

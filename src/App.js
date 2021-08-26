@@ -58,9 +58,8 @@ export default function App() {
   const handleCategory = (e) => {
     setCategory(e.target.value);
   };
-  const clearItems = () => {
-    setExpenses([]);
-    setIncome([]);
+  const clearItems = (e) => {
+    e.target.value === 'income' ? setIncome([]) : setExpenses([])
     handleAlert({ type: "danger", text: "Deleted" });
   };
   const handleDeleteIncome = (id) => {
