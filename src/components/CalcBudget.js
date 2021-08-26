@@ -1,8 +1,8 @@
-const CalcBudget = ({ cash, calcBudget }) => {
+const CalcBudget = ({ cash }) => {
     return (
         <h1 className='sum'>
             Total budget:
-            <span className="total">{calcBudget()}</span>
+            <span className={cash > 0 ? 'green_budget' : 'red_budget'} value={cash}>{cash}$</span>
         </h1>
     );
 };

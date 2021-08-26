@@ -29,6 +29,7 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
     localStorage.setItem("income", JSON.stringify(income));
+    calcBudget()
   }, [expenses, income]);
   const handleAlert = ({ type, text }) => {
     setAlert({ show: true, type, text });
@@ -74,20 +75,16 @@ export default function App() {
   };
   const calcBudget = () => {
     let budgetCash = 0;
-    income.map((e) => (budgetCash = budgetCash + parseInt(e.amount, 0)));
-    expenses.map((e) => (budgetCash = budgetCash - parseInt(e.amount, 0)));
+    income.map((e) => (budgetCash = budgetCash + parseInt(e.amount, 10)));
+    expenses.map((e) => (budgetCash = budgetCash - parseInt(e.amount, 10)));
     setCash(budgetCash);
-    if (cash >= 0) {
-      return <h4 className="green_budget"> {budgetCash} $</h4>;
-    } else {
-      return <h4 className="red_budget"> {budgetCash} $</h4>;
-    }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (charge !== "" && amount > 0 && budget !== "") {
       setCharge("");
       setAmount("");
+      setBudget('');
       if (budget === "income") {
         const singleIncome = { id: uuidv4(), charge, amount, categoryChecked };
         setIncome([...income, singleIncome]);
@@ -130,7 +127,7 @@ export default function App() {
           handleDeleteExpense={handleDeleteExpense}
           clearItems={clearItems}
         />
-        <CalcBudget cash={cash} calcBudget={calcBudget} />
+        <CalcBudget cash={cash} />
       </main>
     </>
   );

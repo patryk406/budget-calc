@@ -6,15 +6,17 @@ const ExpenseItem = ({ expense, handleDeleteExpense }) => {
     <li className="item" key={id}>
       <div className="info">
         <span className="expense">{charge}</span>
-        <span className="amount red_budget">${amount}</span>
-        <span className="category">{categoryChecked}</span>
-        <button
-          className="clear-btn"
-          aria-label="delete button"
-          onClick={() => handleDeleteExpense(id)}
-        >
-          <MdDelete />
-        </button>
+        <div className='info-group'>
+          <span className="amount red_budget">${amount}</span>
+          <span className="category">{categoryChecked}</span>
+          <button
+            className="clear-btn"
+            aria-label="delete button"
+            onClick={() => handleDeleteExpense(id)}
+          >
+            <MdDelete />
+          </button>
+        </div>
       </div>
     </li>
   );
