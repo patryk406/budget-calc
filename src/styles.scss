@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
+$mainBorder: #34495e;
+$mainGreen: #99d98c;
+$hoverGreen: #76c893;
+$mainRed: #f94144;
+$hoverRed: #d90429;
+$mainFont: #0b090a;
+$hoverButton: linear-gradient(to right, #ffc837 0%, #ff8008 51%, #ffc837 100%);
 * {
     margin: 0;
     padding: 0;
@@ -21,24 +28,27 @@ html {
     justify-content: center;
     flex-direction: column;
 }
-$corderColor: #34495e;
+
 .btn,
 .clear-btn {
     @include flexbox;
-    padding: 5px;
+    padding: 2px;
     border-radius: 10px;
-    border: #fff 1px solid;
+    border: $mainBorder 1px solid;
     font-size: 1.2rem;
     background-image: linear-gradient(to right, #ff8008 0%, #ffc837 51%, #ff8008 100%);
     cursor: pointer;
+    &:hover {
+        background: $hoverButton;
+    }
     svg {
-        fill: black;
+        fill: $mainFont;
     }
 }
 .list {
     width: 100%;
     .item {
-        border-bottom: rgb(116, 88, 38) 3px double;
+        border-bottom: $mainBorder 3px double;
         margin-bottom: 5px;
         list-style-type: none;
         .info {
@@ -88,7 +98,6 @@ $corderColor: #34495e;
 }
 .app {
     @include flexbox;
-
     height: 90vh;
 }
 
@@ -97,6 +106,7 @@ form {
     @include flexbox;
     justify-content: space-evenly;
     // Inputs
+    transition: all 2s ease-in-out;
     .form-container {
         .form-group {
             padding: 1rem;
@@ -104,9 +114,9 @@ form {
             .form-control {
                 background: transparent;
                 border: none;
-                border-bottom: $corderColor 2px solid;
+                border-bottom: $mainBorder 2px solid;
                 outline: none;
-                color: $corderColor;
+                color: $mainFont;
                 cursor: pointer;
             }
             input[type="number"]::-webkit-inner-spin-button,
@@ -115,24 +125,24 @@ form {
                 margin: 0;
             }
             ::placeholder {
-                color: #2c3e50;
+                color: $mainFont;
             }
             .form-control:focus {
                 border: none;
-                border-bottom: $corderColor 2px solid;
+                border-bottom: $mainBorder 2px solid;
             }
         }
     }
     // Category
     select {
         background: transparent;
-        border: $corderColor 1.5px solid;
+        border: $mainBorder 1.5px solid;
         border-radius: 10px;
         outline: none;
-        color: $corderColor;
+        color: $mainFont;
         cursor: pointer;
         option {
-            background: $corderColor;
+            background: $mainBorder;
             color: white;
         }
     }
@@ -144,22 +154,22 @@ form {
             border-radius: 5px;
         }
         .income {
-            background: #2ecc71;
+            background: $mainGreen;
             cursor: grab;
         }
         .outcome {
-            background: #e74c3c;
+            background: $mainRed;
             cursor: grab;
         }
         .income_checked {
-            background: #01f567;
-            border: 2px solid $corderColor;
-            color: #ecf0f1;
+            background: $hoverGreen;
+            border: $mainBorder 2px solid;
+            color: $mainFont;
         }
         .outcome_checked {
-            background: #b91301;
-            border: 2px solid $corderColor;
-            color: #ecf0f1;
+            background: $hoverRed;
+            border: $mainBorder 2px solid;
+            color: $mainFont;
         }
         .income input,
         .outcome input,
@@ -213,5 +223,72 @@ form {
     }
     .red_budget {
         color: red;
+    }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .title {
+        font-size: 1.2rem;
+    }
+    form {
+        flex-direction: row;
+    }
+    .radio-group {
+        @include flexbox;
+    }
+}
+@media (min-width: 576px) and (max-width: 769px) {
+    .title {
+        font-size: 1.2rem;
+    }
+    form {
+        flex-direction: row;
+    }
+    .radio-group {
+        @include flexbox;
+    }
+    .budgetList {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .expenseList {
+        margin-bottom: 1rem;
+    }
+    .btn {
+        font-size: 16px;
+        margin: 0;
+    }
+}
+@media (max-width: 576px) {
+    .title {
+        font-size: 1rem;
+    }
+    form {
+        flex-direction: row;
+    }
+    .radio-group {
+        @include flexbox;
+    }
+    .budgetList {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .form-group {
+        padding: 0;
+    }
+    .expenseList {
+        margin-bottom: 1rem;
+    }
+    .expenseList,
+    .incomeList {
+        width: 100%;
+        border-radius: 0;
+        font-size: 14px;
+    }
+    .btn {
+        font-size: 16px;
+        margin: 0;
     }
 }
